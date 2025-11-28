@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ujjwal Kumar | Finance Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Ujjwal Kumar | BBA Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- VARIABLES & RESET --- */
+        /* --- CSS VARIABLES & RESET --- */
         :root {
-            --primary: #0a2540; /* Deep Corporate Blue */
-            --secondary: #00d4ff; /* Tech/Modern Cyan */
-            --accent: #d4af37; /* Gold */
-            --text: #333;
-            --text-light: #666;
-            --bg: #f8f9fa;
+            --primary-color: #0d2c54; /* Corporate Navy Blue */
+            --accent-color: #00b4d8; /* Brighter Blue for buttons */
+            --text-color: #333;
+            --bg-light: #f8f9fa;
             --white: #ffffff;
-            --glass: rgba(255, 255, 255, 0.95);
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --gold: #d4af37;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         * {
@@ -30,35 +28,23 @@
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
+            color: var(--text-color);
+            background-color: var(--bg-light);
+            line-height: 1.6;
         }
 
         a { text-decoration: none; }
         ul { list-style: none; }
 
-        /* --- ANIMATIONS --- */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- NAVIGATION (Glassmorphism) --- */
+        /* --- NAVIGATION (Glass Effect) --- */
         nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
@@ -68,21 +54,17 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary);
-            letter-spacing: 1px;
+            color: var(--primary-color);
         }
-
-        .logo span { color: var(--secondary); }
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         .nav-links a {
-            color: var(--primary);
+            color: var(--primary-color);
             font-weight: 500;
-            font-size: 0.95rem;
             transition: 0.3s;
             position: relative;
         }
@@ -91,22 +73,30 @@
             content: '';
             width: 0;
             height: 2px;
-            background: var(--secondary);
+            background: var(--accent-color);
             position: absolute;
             bottom: -5px;
             left: 0;
             transition: 0.3s;
         }
 
-        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; color: var(--primary); }
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
 
         /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, rgba(10, 37, 64, 0.9), rgba(10, 37, 64, 0.8)), 
-                        url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            /* New Professional Background Image */
+            background: linear-gradient(rgba(13, 44, 84, 0.9), rgba(13, 44, 84, 0.75)), 
+                        url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -118,259 +108,287 @@
             padding: 0 1rem;
         }
 
-        .hero-content {
-            max-width: 800px;
-        }
-
         .hero-content h1 {
-            font-size: 4rem;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            animation: slideDown 1s ease-out;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 1s ease-out;
         }
 
         .hero-content h2 {
             font-size: 1.5rem;
             font-weight: 300;
-            color: var(--secondary);
-            margin-bottom: 2rem;
-            animation: slideUp 1s ease-out 0.3s backwards;
+            margin-bottom: 1.5rem;
+            color: #bddef1;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
         }
 
-        .btn-main {
-            padding: 1rem 2.5rem;
-            background: linear-gradient(to right, var(--secondary), #00b4d8);
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+            animation: fadeInUp 1s ease-out 0.5s backwards;
+        }
+
+        .btn {
+            padding: 0.8rem 2.5rem;
+            background: var(--accent-color);
             color: var(--white);
             border-radius: 50px;
             font-weight: 600;
-            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
-            transition: transform 0.3s;
+            transition: 0.3s;
             display: inline-block;
-            animation: slideUp 1s ease-out 0.6s backwards;
+            box-shadow: 0 5px 15px rgba(0, 180, 216, 0.4);
+            animation: fadeInUp 1s ease-out 0.7s backwards;
         }
 
-        .btn-main:hover {
+        .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.6);
+            background: var(--white);
+            color: var(--accent-color);
         }
 
-        @keyframes slideDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- SECTIONS --- */
-        section { padding: 6rem 10%; }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-        .section-header {
+        /* --- SECTIONS GENERAL --- */
+        section {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
-        .section-header h2 {
+        .section-title h2 {
             font-size: 2.5rem;
-            color: var(--primary);
-            display: inline-block;
+            color: var(--primary-color);
             position: relative;
+            display: inline-block;
         }
 
-        .section-header h2::after {
+        .section-title h2::after {
             content: '';
-            display: block;
             width: 60px;
             height: 4px;
-            background: var(--accent);
-            margin: 10px auto 0;
+            background: var(--gold);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
             border-radius: 2px;
         }
 
         /* --- ABOUT --- */
-        .about-box {
+        .about-content {
             background: var(--white);
-            padding: 3rem;
-            border-radius: 20px;
+            padding: 2.5rem;
+            border-radius: 15px;
             box-shadow: var(--shadow);
-            border-left: 5px solid var(--secondary);
-            line-height: 1.8;
-            color: var(--text-light);
-            font-size: 1.1rem;
+            border-left: 5px solid var(--accent-color);
         }
 
-        .about-box strong { color: var(--primary); }
-
-        /* --- EDUCATION CARDS --- */
-        .edu-grid {
+        /* --- EDUCATION --- */
+        .edu-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
         .edu-card {
             background: var(--white);
-            padding: 2.5rem;
+            padding: 2rem;
             border-radius: 15px;
             box-shadow: var(--shadow);
             transition: 0.3s;
-            position: relative;
-            overflow: hidden;
+            border-top: 4px solid transparent;
         }
 
-        .edu-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--primary);
+        .edu-card:hover {
+            transform: translateY(-10px);
+            border-top: 4px solid var(--primary-color);
         }
 
-        .edu-card:hover { transform: translateY(-10px); }
+        .edu-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
 
-        .edu-card h3 { color: var(--primary); margin-bottom: 0.5rem; }
-        .edu-card .year { color: var(--secondary); font-weight: 600; font-size: 0.9rem; margin-bottom: 1rem; display: block; }
-        .edu-card p { color: var(--text-light); }
+        .edu-card .year {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
 
-        /* --- SKILLS PILLS --- */
-        .skills-wrapper {
+        /* --- SKILLS --- */
+        .skills-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 1.5rem;
         }
 
-        .skill {
+        .skill-tag {
             background: var(--white);
+            color: var(--primary-color);
             padding: 1rem 2rem;
             border-radius: 50px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             font-weight: 600;
-            color: var(--primary);
             display: flex;
             align-items: center;
             gap: 10px;
-            transition: 0.3s;
             border: 1px solid #eee;
+            transition: 0.3s;
         }
 
-        .skill i { color: var(--accent); font-size: 1.2rem; }
-        .skill:hover {
-            background: var(--primary);
+        .skill-tag:hover {
+            background: var(--primary-color);
             color: var(--white);
             transform: scale(1.05);
         }
 
+        .skill-tag i { color: var(--gold); }
+        .skill-tag:hover i { color: var(--white); }
+
         /* --- PROJECTS --- */
         .project-card {
             background: var(--white);
-            padding: 3rem;
+            padding: 2.5rem;
             border-radius: 15px;
             box-shadow: var(--shadow);
             display: flex;
             align-items: flex-start;
             gap: 20px;
         }
-
-        .project-icon {
-            font-size: 3rem;
-            color: var(--secondary);
+        
+        .project-card i.fa-project-diagram {
+            font-size: 2.5rem;
+            color: var(--accent-color);
         }
 
         /* --- CONTACT --- */
-        .contact-grid {
+        .contact-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 2rem;
-        }
-
-        .contact-box {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 15px;
             text-align: center;
-            box-shadow: var(--shadow);
-            transition: 0.3s;
-            text-decoration: none;
-            display: block;
         }
 
-        .contact-box:hover {
-            background: var(--primary);
+        .contact-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: 0.3s;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-item:hover {
+            background: var(--primary-color);
             transform: translateY(-5px);
         }
 
-        .contact-box i {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
+        .contact-item a {
+            display: block;
+            height: 100%;
+            width: 100%;
         }
 
-        .contact-box h3 { color: var(--primary); margin-bottom: 0.5rem; }
-        .contact-box p { color: var(--text-light); font-size: 0.9rem; }
-        
-        .contact-box:hover h3, .contact-box:hover p { color: var(--white); }
+        .contact-item:hover h3, 
+        .contact-item:hover p, 
+        .contact-item:hover i,
+        .contact-item:hover a {
+            color: var(--white);
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h3 { margin-bottom: 0.5rem; color: var(--primary-color); }
+        .contact-item p { color: #666; font-size: 0.9rem; }
 
         /* --- FOOTER --- */
         footer {
-            background: var(--primary);
+            background: var(--primary-color);
             color: var(--white);
-            padding: 3rem 1rem;
             text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 4rem;
         }
 
-        .footer-content h3 { font-size: 1.8rem; margin-bottom: 0.5rem; }
-        .footer-content p { color: #aaa; margin-bottom: 2rem; }
-
-        .dev-credit {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 2rem;
+        .footer-credit {
+            margin-top: 1.5rem;
             padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.9rem;
-            color: #888;
+            color: #aaa;
         }
 
-        .dev-credit a {
-            color: var(--secondary);
+        .footer-credit a {
+            color: var(--accent-color);
             font-weight: 600;
             transition: 0.3s;
         }
 
-        .dev-credit a:hover {
+        .footer-credit a:hover {
             color: var(--white);
             text-decoration: underline;
         }
 
-        /* --- MOBILE --- */
+        /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content h1 { font-size: 2.5rem; }
             .hamburger { display: block; }
             
             .nav-links {
                 position: absolute;
                 top: 70px;
                 right: 0;
-                height: calc(100vh - 70px);
-                width: 100%;
+                height: 100vh;
+                width: 70%;
                 background: var(--white);
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
+                justify-content: flex-start;
+                padding-top: 4rem;
                 transform: translateX(100%);
                 transition: transform 0.3s ease-in-out;
+                box-shadow: -2px 0 10px rgba(0,0,0,0.1);
             }
 
             .nav-links.active { transform: translateX(0%); }
+            .nav-links li { margin: 1.5rem 0; }
             section { padding: 4rem 5%; }
+            .project-card { flex-direction: column; text-align: center; align-items: center; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">Ujjwal<span>.K</span></div>
+        <div class="logo">Ujjwal Kumar</div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#education">Qualifications</a></li>
+            <li><a href="#education">Education</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="hamburger">
@@ -381,151 +399,162 @@
     <header id="home" class="hero">
         <div class="hero-content">
             <h1>Ujjwal Kumar</h1>
-            <h2>Finance & Banking Aspirant</h2>
-            <p style="margin-bottom: 2rem; color: #ddd;">BBA Student • Invertis University • Data Enthusiast</p>
-            <a href="#contact" class="btn-main">View My Resume</a>
+            <h2>BBA Student | Finance & Banking Enthusiast</h2>
+            <p>Invertis University, Bareilly</p>
+            <a href="#contact" class="btn">Get in Touch</a>
         </div>
     </header>
 
-    <section id="about">
-        <div class="section-header fade-in">
+    <section id="about" class="reveal">
+        <div class="section-title">
             <h2>Career Objective</h2>
         </div>
-        <div class="about-box fade-in">
+        <div class="about-content">
             <p>
-                I am a 2nd-year BBA student with a strong interest in <strong>Finance and Banking</strong>. Currently sharpening my expertise in MS Excel, Tally, and financial statement analysis, I thrive on working with data, reports, and system-based tasks. 
+                I am a 2nd-year BBA student with a strong interest in <strong>Finance and Banking</strong>. I am currently developing skills in MS Excel, Tally, and financial statement analysis, and I enjoy working with data, reports, and system-based tasks. Along with my core interests, I am also exploring HR management and logistics operations to gain a well-rounded understanding of business processes.
                 <br><br>
-                Beyond my core focus, I am actively exploring HR management and logistics operations to develop a 360-degree view of business processes. My goal is to connect with industry professionals and secure opportunities that translate my academic knowledge into practical corporate success.
+                I am eager to learn, grow, and connect with industry professionals, with the goal of building a successful career in the Finance and Banking sector. I am open to internships, projects, and opportunities that can help me gain practical industry experience and enhance my professional skills.
             </p>
         </div>
     </section>
 
-    <section id="education">
-        <div class="section-header fade-in">
-            <h2>Education</h2>
+    <section id="education" class="reveal">
+        <div class="section-title">
+            <h2>Academic Qualifications</h2>
         </div>
-        <div class="edu-grid">
-            <div class="edu-card fade-in">
-                <h3>BBA (2nd Year)</h3>
-                <span class="year">Present</span>
+        <div class="edu-container">
+            <div class="edu-card">
+                <h3>Bachelor of Business Administration (BBA)</h3>
+                <p class="year">2nd Year - Present</p>
                 <p>Invertis University, Bareilly</p>
-                <p style="font-size: 0.85rem; margin-top: 10px;">Focus: Financial Management</p>
             </div>
-            <div class="edu-card fade-in">
+            <div class="edu-card">
                 <h3>Intermediate (12th)</h3>
-                <span class="year">BSEB Board</span>
-                <p>Completed with Commerce focus.</p>
+                <p class="year">BSEB Board</p>
+                <p>Focus on Commerce/Business Studies</p>
             </div>
-            <div class="edu-card fade-in">
+            <div class="edu-card">
                 <h3>Matriculation (10th)</h3>
-                <span class="year">CBSE Board</span>
+                <p class="year">CBSE Board</p>
                 <p>Foundation Education</p>
             </div>
         </div>
     </section>
 
-    <section id="skills" style="background-color: var(--white);">
-        <div class="section-header fade-in">
-            <h2>Technical Skills</h2>
+    <section id="skills" class="reveal">
+        <div class="section-title">
+            <h2>My Skills</h2>
         </div>
-        <div class="skills-wrapper fade-in">
-            <div class="skill"><i class="fas fa-file-excel"></i> MS Excel</div>
-            <div class="skill"><i class="fas fa-calculator"></i> Tally Prime</div>
-            <div class="skill"><i class="fas fa-chart-pie"></i> Financial Analysis</div>
-            <div class="skill"><i class="fas fa-comments"></i> Communication</div>
-            <div class="skill"><i class="fas fa-users"></i> Leadership</div>
-            <div class="skill"><i class="fas fa-bullhorn"></i> Digital Marketing</div>
+        <div class="skills-container">
+            <div class="skill-tag"><i class="fas fa-file-excel"></i> MS Excel</div>
+            <div class="skill-tag"><i class="fas fa-comments"></i> Communication</div>
+            <div class="skill-tag"><i class="fas fa-users"></i> Leadership</div>
+            <div class="skill-tag"><i class="fas fa-bullhorn"></i> Digital Marketing</div>
+            <div class="skill-tag"><i class="fas fa-calculator"></i> Tally (Learning)</div>
+            <div class="skill-tag"><i class="fas fa-chart-line"></i> Financial Analysis</div>
         </div>
     </section>
 
-    <section id="projects">
-        <div class="section-header fade-in">
-            <h2>Projects</h2>
+    <section id="projects" class="reveal">
+        <div class="section-title">
+            <h2>Projects & Assignments</h2>
         </div>
-        <div class="project-card fade-in">
-            <div class="project-icon">
-                <i class="fas fa-briefcase"></i>
-            </div>
+        <div class="project-card">
+            <i class="fas fa-project-diagram"></i>
             <div>
-                <h3>Organizational Behaviour: Case Studies</h3>
-                <p style="margin-top: 0.5rem; color: #555;">
-                    Conducted an in-depth analysis of organizational behavior concepts through various case studies. The project focused on understanding team dynamics, leadership styles, and employee motivation within a corporate structure.
+                <h3 style="color: var(--primary-color); margin-bottom: 10px;">Organizational Behaviour</h3>
+                <p>
+                    <strong>Case Studies Project:</strong> Conducted an in-depth analysis of organizational behavior concepts through various case studies. Focused on understanding team dynamics, leadership styles, and employee motivation within a corporate structure.
                 </p>
             </div>
         </div>
     </section>
 
-    <section id="contact">
-        <div class="section-header fade-in">
-            <h2>Get In Touch</h2>
+    <section id="contact" class="reveal">
+        <div class="section-title">
+            <h2>Contact Me</h2>
         </div>
-        <div class="contact-grid">
-            <a href="https://wa.me/918434988719" target="_blank" class="contact-box fade-in">
-                <i class="fab fa-whatsapp"></i>
-                <h3>WhatsApp</h3>
-                <p>+91 84349 88719</p>
-            </a>
+        <div class="contact-container">
+            <div class="contact-item">
+                <a href="https://wa.me/918434988719" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp</h3>
+                    <p>+91 84349 88719</p>
+                </a>
+            </div>
             
-            <a href="mailto:ujjwalshrivastaw742@gmail.com" class="contact-box fade-in">
-                <i class="fas fa-envelope"></i>
-                <h3>Email Me</h3>
-                <p>ujjwalshrivastaw742@gmail.com</p>
-            </a>
+            <div class="contact-item">
+                <a href="mailto:ujjwalshrivastaw742@gmail.com">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>ujjwalshrivastaw742@gmail.com</p>
+                </a>
+            </div>
 
-            <a href="https://www.linkedin.com/in/ujjwal-kumar-42995128a/" target="_blank" class="contact-box fade-in">
-                <i class="fab fa-linkedin-in"></i>
-                <h3>LinkedIn</h3>
-                <p>Connect Professionally</p>
-            </a>
+            <div class="contact-item">
+                <a href="https://www.linkedin.com/in/ujjwal-kumar-42995128a/" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                    <h3>LinkedIn</h3>
+                    <p>Connect Professionally</p>
+                </a>
+            </div>
 
-            <a href="https://www.instagram.com/ujjwalshrivastaw/" target="_blank" class="contact-box fade-in">
-                <i class="fab fa-instagram"></i>
-                <h3>Instagram</h3>
-                <p>Follow Me</p>
-            </a>
+            <div class="contact-item">
+                <a href="https://www.instagram.com/ujjwalshrivastaw/" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    <h3>Instagram</h3>
+                    <p>@ujjwalshrivastaw</p>
+                </a>
+            </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-content">
-            <h3>Ujjwal Kumar</h3>
-            <p>Aspiring Finance Professional</p>
-            <div class="dev-credit">
-                Designed & Developed by <a href="https://rajpratham1.github.io/WebFolio/" target="_blank">Pratham Kumar</a>
-            </div>
+        <p>&copy; 2025 Ujjwal Kumar. All Rights Reserved.</p>
+        <div class="footer-credit">
+            Designed & Developed by <a href="https://rajpratham1.github.io/WebFolio/" target="_blank">Pratham Kumar</a>
         </div>
-    </footer>
+        </footer>
 
     <script>
-        // Mobile Menu Toggle
+        // Mobile Navigation Logic
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
         const links = document.querySelectorAll('.nav-links li');
 
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            hamburger.classList.toggle('fa-times');
-            hamburger.classList.toggle('fa-bars');
+            // Toggle icon between bars and X
+            if(navLinks.classList.contains('active')){
+                hamburger.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            }
         });
 
         links.forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                hamburger.classList.add('fa-bars');
-                hamburger.classList.remove('fa-times');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
 
-        // Scroll Animation Observer
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        // Scroll Animation Logic
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 150;
+
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
                 }
             });
-        }, { threshold: 0.1 });
+        };
 
-        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+        window.addEventListener('scroll', revealOnScroll);
     </script>
 </body>
 </html>
